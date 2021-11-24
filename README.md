@@ -23,6 +23,7 @@ What I meant is for the last part of the name, အောင်, they placed the 
 So I tried to loop from the right-most part of the name and bam, the first obstacle hits me, right in the face.\
 The င under the ် , the င is actually a consonant but it must be combined with the Athat or ် , to create the whole word. So I had to ignore the first consonant that comes after the Athat.\
 The real problem now begins because Myanmar words have other part that comes between the Athat and the consonant!!! And the number of stuff that can come between is variable and can be more than 2 or 3.\
+I wrote incompleteness above because in some cases like, သန့်, we typed it up like သ, န, ် , ့   so I was thinking like the Athat ်   would come second last and the အောက်မြစ် ့  would come after it and I was totally wrong. The Athat ်  comes rightmost then the ့  comes after that which wreaks havocs in my algorith and I had to spend hours trying to fix that.\
 Therefore, I had to come up with a way to filter through to reach the consonant of the last word in a name. And I did.\
 The algoright is not graceful nor very nice but it works!\
 I was like OK, I can get the consonant of the last word in a name already. Why not get all the consonants using this algorighm.\
