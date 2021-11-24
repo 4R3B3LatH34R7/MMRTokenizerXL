@@ -1,7 +1,7 @@
 # MMRTokenizerXL
 ## Tokenizer for Myanmar Unicode Pyidaungsu Font (Visual Order)
-### The Journey
 [MMRTokenizerXL](/images/MMRTokenizerXL.png)
+### The Journey
 As usual, while I was haunting in my usual Facebook Excel groups, I came across somebody asking a question on how to sort a Myanmar Name in Myanmar font using the last name.
 As we, all Myanmar people, know, our names do not have a first name/last name basis but rather like a jumble of nice words joined together to get a beautiful or following the Myanmar astrological beliefs.\
 The main problem with this naming system concerns something else.\
