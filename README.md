@@ -32,7 +32,7 @@ I expanded and improved my code to be able extract all the consonants of a name!
 Then I found that using the consonant of the last word of a name for filtering is not very accurate because in Burmese language, we have a system of laying out the alphabetical order of words, which we called as, မြန်မာအက္ခရာစဉ်. This topic was taungt in the first year of my bachelor's degree and I failed this subject, the Myanmar language!\
 I tried using the consonant extraction UDF and compared it to sorting by using only the consonant from the last word. And I found that the difference is quite impactful.\
 This drives me to finish the whole Tokenization UDF because the Burmese language sorting system uses not just consonants but other parts in the building of a word like those I already mentioned above for example, ်  or ာ or ိ or ု or ့  etc of may of those things.\
-Enough said and I wish to admit that I used just string manipulation functions in this UDF rather than the NLP methods. I am not employing ML or AI with all this.\
+Enough said and I wish to admit that I used just string manipulation functions in this UDF rather than the NLP methods. I am not employing ML or AI with all this.
 
 ### The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
