@@ -1,6 +1,6 @@
 # MMRTokenizerXL
 ## Tokenizer for Myanmar Unicode Pyidaungsu Font (Visual Order)
-[MMRTokenizerXL](/images/MMRTokenizerXL.png)
+![MMRTokenizerXL](/images/MMRTokenizerXL.png)
 ### The Journey
 As usual, while I was haunting in my usual Facebook Excel groups, I came across somebody asking a question on how to sort a Myanmar Name in Myanmar font using the last name.
 As we, all Myanmar people, know, our names do not have a first name/last name basis but rather like a jumble of nice words joined together to get a beautiful or following the Myanmar astrological beliefs.\
@@ -10,7 +10,7 @@ Anyway, the real problem is that I found it hard to find out the word break poin
 Let's consider a name in old Burmese e.g. ခင်မို့မို့အောင် (=Khin Moh Moh Aung) this is actually a Pali related name.\
 In this case, even though we spell in English like so inside the parentheses, the Myanmar words do NOT have any white space between them. They just don't have to.\
 If we want to separate/tokenize/split the name in English, we could easily do so in VBA using the SPLIT function.\
-But we have no way of achieving the same goal with a Myanmar font, the Pyidaungsu font, namely, because we have no idea where the consonants are.\
+But we have no way of achieving the same goal with a Myanmar font, the Pyidaungsu font, namely, because we have no idea where the consonants are.
 
 I am so interested in Natural Language Process (NLP) but it is very hard for me to understand those papers written by NLP specialists because I don't have the basics of linguistics and I was never officially trained in programming languages, especially the VBA, I have currently and mostly written in.\
 However, I persevered and read through many papers but I got no where.\
