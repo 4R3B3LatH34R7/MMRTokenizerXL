@@ -34,6 +34,13 @@ I tried using the consonant extraction UDF and compared it to sorting by using o
 This drives me to finish the whole Tokenization UDF because the Burmese language sorting system uses not just consonants but other parts in the building of a word like those I already mentioned above for example, ်  or ာ or ိ or ု or ့  etc of may of those things.\
 Enough said and I wish to admit that I used just string manipulation functions in this UDF rather than the NLP methods. I am not employing ML or AI with all this.
 
+### MMRManipulator
+This is a tool spawned from being able tokenize in order to manipulate the Myanmar words typed in Pyidaungsu font.\
+It can be used to tokenize the words, for any purpose, like for sorting, counting, replacing...etc...with the sky at the limit of users' imagination.\
+With an argument switch, can change the tokenization character to become anything, any text, any string, even nothing!\
+The users can also reverse the whole Myanmar sentence word by word with the first word becoming the last word and vice versa...
+The result of using this tool can be found in the photo.
+
 ### The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
 I believe that is very feasible but the only problem I can foresee now is that, Unichar and Unicode formulas are only available in Office 2013 onwards and unfortunately this will limit the users of my future tokenization formula.\
