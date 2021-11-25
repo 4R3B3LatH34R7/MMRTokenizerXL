@@ -48,6 +48,7 @@ The result of using this tool can be found in the [photo](/images/MMRTokenizerXL
 
 How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse can be reviewed in the following short video.
 ![MMRManipulator](/images/MMRManipulator_Sorting.mp4)
+[![MMRManipulator](/images/MMRManipulator_Sorting_thumbnail.png)](/images/MMRManipulator_Sorting.mp4)
 The process is simple in that users just need to use the UDF to reverse the range containing Myanmar words.\
 The UDF only requires the first argument: 
 1. the target range, which is essential
