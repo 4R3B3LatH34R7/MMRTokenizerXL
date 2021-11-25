@@ -34,12 +34,56 @@ I tried using the consonant extraction UDF and compared it to sorting by using o
 This drives me to finish the whole Tokenization UDF because the Burmese language sorting system uses not just consonants but other parts in the building of a word like those I already mentioned above for example, ်  or ာ or ိ or ု or ့  etc of may of those things.\
 Enough said and I wish to admit that I used just string manipulation functions in this UDF rather than the NLP methods. I am not employing ML or AI with all this.
 
-### MMRManipulator
+### 1.1.MMRTokenizer
+MMRTokenizer is designed to be purely used for tokenization of Myanmar words without additional bells and whistles, as this UDF was purported to be used for further processing into NLP methods, rather than intended for general everyday use.\
+If extra functionality is required, the users are encouraged to use [MMRManipulator UDF](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#mmrmanipulator).\
+Since this UDF is mainly intended for NLP-related usage, it's users are expected to be able to manipulate the VBA source code directly to change the separator to their whims, so no switching arguments are included for that purpose.\
+
+### 1.2.MMRManipulator
 This is a tool spawned from being able tokenize in order to manipulate the Myanmar words typed in Pyidaungsu font.\
 It can be used to tokenize the words, for any purpose, like for sorting, counting, replacing...etc...with the sky at the limit of users' imagination.\
 With an argument switch, can change the tokenization character to become anything, any text, any string, even nothing!\
-The users can also reverse the whole Myanmar sentence word by word with the first word becoming the last word and vice versa...
-The result of using this tool can be found in the photo.
+The users can also reverse the whole Myanmar sentence word by word with the first word becoming the last word and vice versa...\
+The result of using this tool can be found in the [photo](/images/MMRTokenizerXL.png) under the right most column (Column F).
+
+How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse can be reviewed in the following short video.
+![MMRManipulator](/images/MMRManipulator_Sorting.mp4)
+The process is simple in that users just need to use the UDF to reverse the range containing Myanmar words.\
+The UDF only requires the first argument: 
+1. the target range, which is essential
+2. the second argument is for defining the separator for the output of the UDF, which can be anything from ""=vbNullString or blank or a space or any word in Burmese or English and since no check was performed on this argument's validity, it can be quite powerful and dangerous at the same time.
+3. the third argument is a boolean variable which acts as a switch for reversing the output of the UDF.
+So, if cell A1 contains "ကိုကိုအေး" and from inside cell B1, if we call the UDF as: (let "->" denotes "returns")
+1. =MMRManipulator(A1) -> ကို|ကို|အေး
+2. =MMRManipulator(A1,"@") -> ကို@ကို@အေး
+3. =MMRManipulator(A1,"",TRUE) -> အေးကိုကို (please note that "" is not space but denotes nothing)
+Apart from the cell reference, the remaining 2 arguments are optional, thus, calling like =MMRManipulator(A1,,) is legitimate and will return ကို|ကို|အေး.
+
+### 1.3.getMMRConsonants
+This UDF was designed in the earlier stages of development of MMRTokenizer to help me identify, check and confirm the location of Myanmar consonants in a cell containing Myanmar word(s).\
+There are altogether 4 possible arguments that can be passed when calling it.
+1. target range (required)
+2. reversed order (optional with default=false)
+3. last character only (optional with default=false)
+4. location of consonants (optional with default=false)
+Apart from the target range, the rest as optional.\
+The arguments are pretty obvious and I believe that there is no need for further explanation.\
+The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column C.
+
+### 1.4.MMRParser
+This UDF was also written in the earlier part of the development of MMRTokenizer to help me confirm the location of the Myanmar consonants.\
+Only 1 argument is required, out of the 3 possible arguments.\
+1. target range (required)
+2. output as Myanmar (optional with default=false)
+3. hightlight Consonants (optional with default=false)
+
+This UDF just returns the Unicode values (numbers) as a string of text. For example, if cell A1 contains သီရိ, calling from inside cell B1 as,
+1. =MMRParser(A1) -> 4126|4142|4123|4141 -> returning the Unicode values separated by | (pipe) character.
+2. =MMRParser(A1,TRUE) -> သ|ီ|ရ|ိ -> showing how the word was spelled.
+3. =MMRParser(A1,,TRUE) -> returns သ|4142|ရ|4141 -> showing the location of Myanmar consonants in the word.
+
+I don't think there would be much use for this UDF by everyday users, however, I am hoping that it would be useful to NLP devs.
+The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column D.
 
 ### The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
