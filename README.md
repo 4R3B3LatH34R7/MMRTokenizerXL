@@ -46,9 +46,8 @@ With an argument switch, can change the tokenization character to become anythin
 The users can also reverse the whole Myanmar sentence word by word with the first word becoming the last word and vice versa...\
 The result of using this tool can be found in the [photo](/images/MMRTokenizerXL.png) under the right most column (Column F).
 
-How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse can be reviewed in the following short video.
-![MMRManipulator](/images/MMRManipulator_Sorting.mp4)
-[![MMRManipulator](/images/MMRManipulator_Sorting_thumbnail.png)](/images/MMRManipulator_Sorting.mp4)
+How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse can be reviewed in the following short .gif.
+![MMRManipulator](/images/MMRManipulator_sorting.gif)
 The process is simple in that users just need to use the UDF to reverse the range containing Myanmar words.\
 The UDF only requires the first argument: 
 1. the target range, which is essential
