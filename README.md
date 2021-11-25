@@ -59,11 +59,12 @@ It can be used to tokenize the words, for any purpose, like for sorting, countin
 With an argument switch, can change the tokenization character to become anything, any text, any string, even nothing!\
 The users can also reverse the whole Myanmar sentence word by word with the first word becoming the last word and vice versa...\
 The result of using this tool can be found in the [photo](/images/MMRTokenizerXL.png) under the right most column (Column F).
+If cell A1 contains မိုးအောင်ခင်, then calling from inside cell B1 like, =MMRTokenizer(A1), shall return မိုး|အောင်|ခင်.
 
 How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse can be reviewed in the following short .gif.
 ![MMRManipulator](/images/MMRManipulator_sorting.gif)
 The process is simple in that users just need to use the UDF to reverse the range containing Myanmar words.\
-The UDF only requires the first argument: 
+The UDF only requires the first argument, out of the existing 3: 
 1. the target range, which is essential
 2. the second argument is for defining the separator for the output of the UDF, which can be anything from ""=vbNullString or blank or a space or any word in Burmese or English and since no check was performed on this argument's validity, it can be quite powerful and dangerous at the same time.
 3. the third argument is a boolean variable which acts as a switch for reversing the output of the UDF.
