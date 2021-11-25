@@ -21,7 +21,8 @@ Now that there is this question about how to sort Myanmar names using the last w
 So I tried to get the consonant of the last word from a name. It was very hard for me because I didn't know how Pyidaungsu font stitches each parts of a word.
 
 For example, for the same name, ခင်မို့မို့အောင်, (a beautiful name for a girl btw), we actually typed it up using the Windows10's Burmese Keyboard (Visual Order) in Pyidaungsu font like (ခ, င, ် , မ, ိ, ု, ့ , မ, ိ, ု, ့ , ‌ေ, အ, ာ, င, ်     ) because we need to type the way we spell as well as the way we see/read it. There is another Burmese Keyboard using Phonetic Order but I am not using it and I don't develop code for that because the typing is pretty hard on it.\
-From trial and error and trying to convert each typed parts into Unicode values using AscW and ChrW, I realized that, the developers of the Pyidaungsu font decided to put together a system (an incomplete one, more on this later) which, in a way, places the consonants in front of every other appendages of a Burmese word spelling.\
+From trial and error and trying to convert each typed parts into Unicode values using AscW and ChrW, I realized that, the developers of the Pyidaungsu font decided to put together a system (an incomplete one, more on this later) which, in a way, places the consonants in front of every other appendages of a Burmese word spelling.
+
 What I meant is for the last part of the name, အောင်, they placed the consonant အ in front of the other stuff. And they bind them together like အ, ‌ေ, ာ, င, ် , and if that is a uniform method, I could come up with a UDF for tokenization!
 So I tried to loop from the right-most part of the name and bam, the first obstacle hits me, right in the face.\
 The င under the ် , the င is actually a consonant but it must be combined with the Athat or ် , to create the whole word. So I had to ignore the first consonant that comes after the Athat.\
@@ -48,9 +49,9 @@ There are currently 4 UDFs in the .bas and .xlsm files upon release.
 4. [MMRParser](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#14mmrparser)
 
 ### 1.1.MMRTokenizer
-MMRTokenizer is designed to be purely used for tokenization of Myanmar words without additional bells and whistles, as this UDF was purported to be used for further processing into NLP methods, rather than intended for general everyday use.\
+MMRTokenizer is designed to be used mainly for tokenization of Myanmar words without additional bells and whistles, as this UDF was purported to be used for further processing into NLP methods, rather than intended for general everyday use.\
 If extra functionality is required, the users are encouraged to use [MMRManipulator UDF](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#mmrmanipulator).\
-Since this UDF is mainly intended for NLP-related usage, it's users are expected to be able to manipulate the VBA source code directly to change the separator to their whims, so no switching arguments are included for that purpose.\
+Since this UDF is mainly intended for NLP-related usage, it's users are expected to be able to manipulate the VBA source code directly to change the separator to their whims, so no switching arguments are included for that purpose.
 
 ### 1.2.MMRManipulator
 This is a tool spawned from being able tokenize in order to manipulate the Myanmar words typed in Pyidaungsu font.\
