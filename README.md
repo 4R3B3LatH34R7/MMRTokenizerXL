@@ -1,7 +1,7 @@
 # MMRTokenizerXL
 ## Tokenizer for Myanmar Unicode Pyidaungsu Font (Visual Order)
 ![MMRTokenizerXL](/images/MMRTokenizerXL.png)
-### The Journey
+## The Journey
 As usual, while I was haunting in my usual Facebook Excel groups, I came across somebody asking a question on how to sort a Myanmar Name in Myanmar font using the last name.
 As we, all Myanmar people, know, our names do not have a first name/last name basis but rather like a jumble of nice words joined together to get a beautiful or following the Myanmar astrological beliefs.\
 The main problem with this naming system concerns something else.\
@@ -33,6 +33,14 @@ Then I found that using the consonant of the last word of a name for filtering i
 I tried using the consonant extraction UDF and compared it to sorting by using only the consonant from the last word. And I found that the difference is quite impactful.\
 This drives me to finish the whole Tokenization UDF because the Burmese language sorting system uses not just consonants but other parts in the building of a word like those I already mentioned above for example, ်  or ာ or ိ or ု or ့  etc of may of those things.\
 Enough said and I wish to admit that I used just string manipulation functions in this UDF rather than the NLP methods. I am not employing ML or AI with all this.
+
+## The UDFs
+The source code may be released as plain text.\
+There are currently 4 UDFs in the .bas and .xlsm files upon release.
+1. [MMRTokenizer](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#11mmrtokenizer)
+2. [MMRManipulator](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#12mmrmanipulator)
+3. [getMMRConsonants](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#13getmmrconsonants)
+4. [MMRParser](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#14mmrparser)
 
 ### 1.1.MMRTokenizer
 MMRTokenizer is designed to be purely used for tokenization of Myanmar words without additional bells and whistles, as this UDF was purported to be used for further processing into NLP methods, rather than intended for general everyday use.\
