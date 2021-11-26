@@ -157,6 +157,12 @@ Option Explicit
 '*disclaimer, in order to use it.                                                                                                 *
 '*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
 '**********************************************************************************************************************************
+'Can place the constants in each function if only some functions were required
+Public Const kagyi = 4096
+Public Const ah = 4129 '+9 to include ou
+Public Const athat = 4154
+Public Const shiftF = 4153 'for typing something under something
+Public Const witecha = 4140
 
 'Return tokenized words using user-selectable optional separator and ability to reverse the Myanmar word string
 Function MMRManipulator(target As Range, Optional separator As String = "|", Optional reversed As Boolean = False) As String
@@ -231,6 +237,12 @@ Option Explicit
 '*disclaimer, in order to use it.                                                                                                 *
 '*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
 '**********************************************************************************************************************************
+'Can place the constants in each function if only some functions were required
+Public Const kagyi = 4096
+Public Const ah = 4129 '+9 to include ou
+Public Const athat = 4154
+Public Const shiftF = 4153 'for typing something under something
+Public Const witecha = 4140
 
 'Return all consonants within a range with optional reversing, last character only or consonant locations instead of actual ones
 Function getMMRConsonants(target As Range, Optional reversedOrder As Boolean = False, Optional lastCharOnly As Boolean = False, Optional LOC As Boolean = False) As String
@@ -305,6 +317,12 @@ Option Explicit
 '*disclaimer, in order to use it.                                                                                                 *
 '*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
 '**********************************************************************************************************************************
+'Can place the constants in each function if only some functions were required
+Public Const kagyi = 4096
+Public Const ah = 4129 '+9 to include ou
+Public Const athat = 4154
+Public Const shiftF = 4153 'for typing something under something
+Public Const witecha = 4140
 
 'Parse Myanmar strings into Unicode code values or Myanmar consonants and Diacritics and can return consonants in Burmese combined with numerical Diacritics
 Function MMRParser(target As Range, Optional outputMMR As Boolean = False, Optional highlightConsonants As Boolean = False) As String
