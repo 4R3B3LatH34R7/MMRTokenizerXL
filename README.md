@@ -53,6 +53,73 @@ MMRTokenizer is designed to be used mainly for tokenization of Myanmar words wit
 If extra functionality is required, the users are encouraged to use [MMRManipulator UDF](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#mmrmanipulator).\
 Since this UDF is mainly intended for NLP-related usage, it's users are expected to be able to manipulate the VBA source code directly to change the separator to their whims, so no switching arguments are included for that purpose.
 
+```
+Option Explicit
+'**********************************************************************************************************************************
+'*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
+'*Any commercial distribution of the code herein requires acknowledgement, consent and approval from the author.                  *
+'*The developer of the code holds complete and thorough copyrights, however, no authorization is required for educational and     *
+'*humanitarian uses, in which case, this whole declaration section must be included wheresoever the code herein is placed.        *
+'*Failure to comply with above declarations shall be liable to the full extent of the law.                                        *
+'*The VBA code provided herewith has no guarantee whatsoever with it and any untoward effect(s) that occur(s) shall not be held   *
+'*liable to the developer and it is taken as a legally binding fact that the user(s) of said code must have agreed to this        *
+'*disclaimer, in order to use it.                                                                                                 *
+'*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
+'**********************************************************************************************************************************
+
+'Can place the constants in each function if only some functions were required
+Public Const kagyi = 4096
+Public Const ah = 4129 '+9 to include ou
+Public Const athat = 4154
+Public Const shiftF = 4153 'for typing something under something
+Public Const witecha = 4140
+
+'Return a tokenized Myanmar String
+Function MMRTokenizer(target As Range) As String
+Dim ch As String
+Dim returnString As String
+Dim charCounter As Integer
+Dim previousChIsAthat As Boolean
+Dim shiftFfound As Boolean
+Dim previousCharAt As Integer '?long
+    returnString = "": previousChIsAthat = False: shiftFfound = False: previousCharAt = Len(target.Value) + 1
+    If target.CountLarge = 1 Then
+        If target.Value <> "" Then
+            For charCounter = Len(target.Value) To 1 Step -1
+                ch = Mid(target.Value, charCounter, 1)
+                If AscW(ch) <> shiftF Then
+                    If Not shiftFfound Or AscW(ch) = athat Then
+                        If AscW(ch) <> athat Then
+                            If AscW(ch) >= kagyi And AscW(ch) < ah + 9 Then
+                                If Not previousChIsAthat Then
+                                    returnString = Mid(target.Value, charCounter, previousCharAt - charCounter) & IIf(Len(returnString) > 0, "|", "") & returnString
+                                    previousCharAt = charCounter
+                                Else
+                                    previousChIsAthat = False
+                                End If
+                            Else
+                                If AscW(ch) = witecha Then
+                                    previousChIsAthat = False
+                                End If
+                            End If
+                        Else
+                            previousChIsAthat = True
+                            If shiftFfound Then shiftFfound = False
+                        End If
+                    Else
+                        shiftFfound = False
+                        If previousChIsAthat Then previousChIsAthat = False
+                    End If
+                Else
+                    shiftFfound = True
+                End If
+            Next charCounter
+        End If
+    End If
+    MMRTokenizer = returnString
+End Function
+```
+
 ### 1.2.MMRManipulator
 This is a tool spawned from being able tokenize in order to manipulate the Myanmar words typed in Pyidaungsu font.\
 It can be used to tokenize the words, for any purpose, like for sorting, counting, replacing...etc...with the sky at the limit of users' imagination.\
@@ -75,6 +142,69 @@ So, if cell A1 contains "ကိုကိုအေး" and from inside cell B1, i
 3. =MMRManipulator(A1,"",TRUE) -> အေးကိုကို (please note that "" is not space but denotes nothing)
 Apart from the cell reference, the remaining 2 arguments are optional, thus, calling like =MMRManipulator(A1,,) is legitimate and will return ကို|ကို|အေး.
 
+Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
+```
+Option Explicit
+'**********************************************************************************************************************************
+'*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
+'*Any commercial distribution of the code herein requires acknowledgement, consent and approval from the author.                  *
+'*The developer of the code holds complete and thorough copyrights, however, no authorization is required for educational and     *
+'*humanitarian uses, in which case, this whole declaration section must be included wheresoever the code herein is placed.        *
+'*Failure to comply with above declarations shall be liable to the full extent of the law.                                        *
+'*The VBA code provided herewith has no guarantee whatsoever with it and any untoward effect(s) that occur(s) shall not be held   *
+'*liable to the developer and it is taken as a legally binding fact that the user(s) of said code must have agreed to this        *
+'*disclaimer, in order to use it.                                                                                                 *
+'*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
+'**********************************************************************************************************************************
+
+'Return tokenized words using user-selectable optional separator and ability to reverse the Myanmar word string
+Function MMRManipulator(target As Range, Optional separator As String = "|", Optional reversed As Boolean = False) As String
+Dim ch As String
+Dim returnString As String
+Dim charCounter As Integer
+Dim previousChIsAthat As Boolean
+Dim shiftFfound As Boolean
+Dim previousCharAt As Integer '?long
+    returnString = "": previousChIsAthat = False: shiftFfound = False: previousCharAt = Len(target.Value) + 1
+    If target.CountLarge = 1 Then
+        If target.Value <> "" Then
+            For charCounter = Len(target.Value) To 1 Step -1
+                ch = Mid(target.Value, charCounter, 1)
+                If AscW(ch) <> shiftF Then
+                    If Not shiftFfound Or AscW(ch) = athat Then
+                        If AscW(ch) <> athat Then
+                            If AscW(ch) >= kagyi And AscW(ch) < ah + 9 Then
+                                If Not previousChIsAthat Then
+                                    returnString = IIf(reversed, returnString, Mid(target.Value, charCounter, previousCharAt - charCounter)) & _
+                                                   IIf(Len(returnString) > 0, separator, "") & _
+                                                   IIf(reversed, Mid(target.Value, charCounter, previousCharAt - charCounter), returnString)
+                                    previousCharAt = charCounter
+                                Else
+                                    previousChIsAthat = False
+                                End If
+                            Else
+                                If AscW(ch) = witecha Then
+                                    previousChIsAthat = False
+                                End If
+                            End If
+                        Else
+                            previousChIsAthat = True
+                            If shiftFfound Then shiftFfound = False
+                        End If
+                    Else
+                        shiftFfound = False
+                        If previousChIsAthat Then previousChIsAthat = False
+                    End If
+                Else
+                    shiftFfound = True
+                End If
+            Next charCounter
+        End If
+    End If
+    MMRManipulator = returnString
+End Function
+```
+
 ### 1.3.getMMRConsonants
 This UDF was designed in the earlier stages of development of MMRTokenizer to help me identify, check and confirm the location of Myanmar consonants in a cell containing Myanmar word(s).\
 There are altogether 4 possible arguments that can be passed when calling it.
@@ -85,6 +215,65 @@ There are altogether 4 possible arguments that can be passed when calling it.
 Apart from the target range, the rest as optional.\
 The arguments are pretty obvious and I believe that there is no need for further explanation.\
 The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column C.
+
+Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
+```
+Option Explicit
+'**********************************************************************************************************************************
+'*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
+'*Any commercial distribution of the code herein requires acknowledgement, consent and approval from the author.                  *
+'*The developer of the code holds complete and thorough copyrights, however, no authorization is required for educational and     *
+'*humanitarian uses, in which case, this whole declaration section must be included wheresoever the code herein is placed.        *
+'*Failure to comply with above declarations shall be liable to the full extent of the law.                                        *
+'*The VBA code provided herewith has no guarantee whatsoever with it and any untoward effect(s) that occur(s) shall not be held   *
+'*liable to the developer and it is taken as a legally binding fact that the user(s) of said code must have agreed to this        *
+'*disclaimer, in order to use it.                                                                                                 *
+'*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
+'**********************************************************************************************************************************
+
+'Return all consonants within a range with optional reversing, last character only or consonant locations instead of actual ones
+Function getMMRConsonants(target As Range, Optional reversedOrder As Boolean = False, Optional lastCharOnly As Boolean = False, Optional LOC As Boolean = False) As String
+Dim ch As String
+Dim returnString As String
+Dim charCounter As Integer
+Dim previousChIsAthat As Boolean
+Dim shiftFfound As Boolean
+    returnString = "": previousChIsAthat = False: shiftFfound = False
+    If target.CountLarge = 1 Then
+        If target.Value <> "" Then
+            For charCounter = Len(target.Value) To 1 Step -1
+                ch = Mid(target.Value, charCounter, 1)
+                If AscW(ch) <> shiftF Then
+                    If Not shiftFfound Or AscW(ch) = athat Then
+                        If AscW(ch) <> athat Then
+                            If AscW(ch) >= kagyi And AscW(ch) < ah + 9 Then
+                                If Not previousChIsAthat Then
+                                    returnString = IIf(LOC, CStr(charCounter) + IIf(Len(returnString) > 0, "|", "") + returnString, ch + returnString)
+                                Else
+                                    previousChIsAthat = False
+                                End If
+                            Else
+                                If AscW(ch) = witecha Then
+                                    previousChIsAthat = False
+                                End If
+                            End If
+                        Else
+                            previousChIsAthat = True
+                            If shiftFfound Then shiftFfound = False
+                        End If
+                    Else
+                        shiftFfound = False
+                        If previousChIsAthat Then previousChIsAthat = False
+                    End If
+                Else
+                    shiftFfound = True
+                End If
+            Next charCounter
+        End If
+    End If
+    getMMRConsonants = IIf(lastCharOnly, Right(returnString, 1), IIf(reversedOrder, StrReverse(returnString), returnString))
+End Function
+```
 
 ### 1.4.MMRParser
 This UDF was also written in the earlier part of the development of MMRTokenizer to help me confirm the location of the Myanmar consonants.\
@@ -101,6 +290,69 @@ This UDF just returns the Unicode values (numbers) as a string of text. For exam
 I don't think there would be much use for this UDF by everyday users, however, I am hoping that it would be useful to NLP devs.
 The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column D.
 
+Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
+```
+Option Explicit
+'**********************************************************************************************************************************
+'*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
+'*Any commercial distribution of the code herein requires acknowledgement, consent and approval from the author.                  *
+'*The developer of the code holds complete and thorough copyrights, however, no authorization is required for educational and     *
+'*humanitarian uses, in which case, this whole declaration section must be included wheresoever the code herein is placed.        *
+'*Failure to comply with above declarations shall be liable to the full extent of the law.                                        *
+'*The VBA code provided herewith has no guarantee whatsoever with it and any untoward effect(s) that occur(s) shall not be held   *
+'*liable to the developer and it is taken as a legally binding fact that the user(s) of said code must have agreed to this        *
+'*disclaimer, in order to use it.                                                                                                 *
+'*Contact info can be found at https://github.com/4R3B3LatH34R7                                                                   *
+'**********************************************************************************************************************************
+
+'Parse Myanmar strings into Unicode code values or Myanmar consonants and Diacritics and can return consonants in Burmese combined with numerical Diacritics
+Function MMRParser(target As Range, Optional outputMMR As Boolean = False, Optional highlightConsonants As Boolean = False) As String
+Dim returnStringArray()
+Dim ch As String
+Dim chCounter As Integer
+Dim previousChIsAthat As Boolean
+Dim shiftFfound As Boolean
+Dim legitConsonantFound As Boolean
+    previousChIsAthat = False: shiftFfound = False
+    If target.CountLarge = 1 Then
+        If target.Value <> "" Then
+            ReDim returnStringArray(1 To Len(target.Value))
+            For chCounter = Len(target.Value) To 1 Step -1
+                ch = Mid(target.Value, chCounter, 1)
+                legitConsonantFound = False
+                If AscW(ch) <> shiftF Then
+                    If Not shiftFfound Or AscW(ch) = athat Then
+                        If AscW(ch) <> athat Then
+                            If AscW(ch) >= kagyi And AscW(ch) < ah + 9 Then
+                                If Not previousChIsAthat Then
+                                    returnStringArray(chCounter) = IIf(outputMMR, ch, IIf(highlightConsonants, ch, AscW(ch)))
+                                    legitConsonantFound = True
+                                Else
+                                    previousChIsAthat = False
+                                End If
+                            Else
+                                If AscW(ch) = witecha Then
+                                    previousChIsAthat = False
+                                End If
+                            End If
+                        Else
+                            previousChIsAthat = True
+                            If shiftFfound Then shiftFfound = False
+                        End If
+                    Else
+                        shiftFfound = False
+                        If previousChIsAthat Then previousChIsAthat = False
+                    End If
+                Else
+                    shiftFfound = True
+                End If
+                If Not legitConsonantFound Then returnStringArray(chCounter) = IIf(outputMMR, ch, AscW(ch))
+            Next chCounter
+        End If
+    End If
+    MMRParser = Join(returnStringArray, "|")
+End Function
+```
 ## Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
 ### First Release
