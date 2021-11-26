@@ -101,12 +101,12 @@ This UDF just returns the Unicode values (numbers) as a string of text. For exam
 I don't think there would be much use for this UDF by everyday users, however, I am hoping that it would be useful to NLP devs.
 The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column D.
 
-### Releases
+## Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
-## First Release
-[First released](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40.
+### First Release
+[First released](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40 Myanmar Standard Time.
 
-### The Future
+## The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
 I believe that is very feasible but the only problem I can foresee now is that, Unichar and Unicode formulas are only available in Office 2013 onwards and unfortunately this will limit the users of my future tokenization formula.\
 Fortunately for them, they can use the UDF that I developed, which may have a bit of a hassle for copying/importing the code into their worksheets.
