@@ -53,7 +53,8 @@ MMRTokenizer is designed to be used mainly for tokenization of Myanmar words wit
 If extra functionality is required, the users are encouraged to use [MMRManipulator UDF](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#mmrmanipulator).\
 Since this UDF is mainly intended for NLP-related usage, it's users are expected to be able to manipulate the VBA source code directly to change the separator to their whims, so no switching arguments are included for that purpose.
 
-```
+Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
+```VBA
 Option Explicit
 '**********************************************************************************************************************************
 '*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
@@ -143,7 +144,7 @@ So, if cell A1 contains "ကိုကိုအေး" and from inside cell B1, i
 Apart from the cell reference, the remaining 2 arguments are optional, thus, calling like =MMRManipulator(A1,,) is legitimate and will return ကို|ကို|အေး.
 
 Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
-```
+```VBA
 Option Explicit
 '**********************************************************************************************************************************
 '*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
@@ -217,7 +218,7 @@ The arguments are pretty obvious and I believe that there is no need for further
 The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column C.
 
 Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
-```
+```VBA
 Option Explicit
 '**********************************************************************************************************************************
 '*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
@@ -291,7 +292,7 @@ I don't think there would be much use for this UDF by everyday users, however, I
 The output of this UDF can be seen in the [photo](/images/MMRTokenizerXL.png) under the Column D.
 
 Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
-```
+```VBA
 Option Explicit
 '**********************************************************************************************************************************
 '*Users of the following VBA code are not allowed to share the code commercially without written approval from the developer.     *
