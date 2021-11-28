@@ -74,6 +74,7 @@ Public Const ah = 4129 '+9 to include ou
 Public Const athat = 4154
 Public Const shiftF = 4153 'for typing something under something
 Public Const witecha = 4140
+Public Const moutcha = 4139
 
 'Return a tokenized Myanmar String
 Function MMRTokenizer(target As Range) As String
@@ -99,7 +100,7 @@ Dim previousCharAt As Integer '?long
                                     previousChIsAthat = False
                                 End If
                             Else
-                                If AscW(ch) = witecha Then
+                                If AscW(ch) = witecha Or AscW(ch) = moutcha Then
                                     previousChIsAthat = False
                                 End If
                             End If
@@ -163,15 +164,17 @@ Public Const ah = 4129 '+9 to include ou
 Public Const athat = 4154
 Public Const shiftF = 4153 'for typing something under something
 Public Const witecha = 4140
+Public Const moutcha = 4139
 
 'Return tokenized words using user-selectable optional separator and ability to reverse the Myanmar word string
-Function MMRManipulator(target As Range, Optional separator As String = "|", Optional reversed As Boolean = False) As String
+Function MMRManipulator(target As Range, Optional lwrapper As String = "", Optional separator As String = "|", Optional rwrapper As String = "", Optional reversed As Boolean = False) As String
 Dim ch As String
 Dim returnString As String
 Dim charCounter As Integer
 Dim previousChIsAthat As Boolean
 Dim shiftFfound As Boolean
 Dim previousCharAt As Integer '?long
+
     returnString = "": previousChIsAthat = False: shiftFfound = False: previousCharAt = Len(target.Value) + 1
     If target.CountLarge = 1 Then
         If target.Value <> "" Then
@@ -190,7 +193,7 @@ Dim previousCharAt As Integer '?long
                                     previousChIsAthat = False
                                 End If
                             Else
-                                If AscW(ch) = witecha Then
+                                If AscW(ch) = witecha Or AscW(ch) = moutcha Then
                                     previousChIsAthat = False
                                 End If
                             End If
@@ -206,6 +209,7 @@ Dim previousCharAt As Integer '?long
                     shiftFfound = True
                 End If
             Next charCounter
+            returnString = lwrapper & Join(Split(returnString, separator), rwrapper & separator & lwrapper) & rwrapper
         End If
     End If
     MMRManipulator = returnString
@@ -243,6 +247,7 @@ Public Const ah = 4129 '+9 to include ou
 Public Const athat = 4154
 Public Const shiftF = 4153 'for typing something under something
 Public Const witecha = 4140
+Public Const moutcha = 4139
 
 'Return all consonants within a range with optional reversing, last character only or consonant locations instead of actual ones
 Function getMMRConsonants(target As Range, Optional reversedOrder As Boolean = False, Optional lastCharOnly As Boolean = False, Optional LOC As Boolean = False) As String
@@ -266,7 +271,7 @@ Dim shiftFfound As Boolean
                                     previousChIsAthat = False
                                 End If
                             Else
-                                If AscW(ch) = witecha Then
+                                If AscW(ch) = witecha Or AscW(ch) = moutcha Then
                                     previousChIsAthat = False
                                 End If
                             End If
@@ -323,6 +328,7 @@ Public Const ah = 4129 '+9 to include ou
 Public Const athat = 4154
 Public Const shiftF = 4153 'for typing something under something
 Public Const witecha = 4140
+Public Const moutcha = 4139
 
 'Parse Myanmar strings into Unicode code values or Myanmar consonants and Diacritics and can return consonants in Burmese combined with numerical Diacritics
 Function MMRParser(target As Range, Optional outputMMR As Boolean = False, Optional highlightConsonants As Boolean = False) As String
@@ -350,7 +356,7 @@ Dim legitConsonantFound As Boolean
                                     previousChIsAthat = False
                                 End If
                             Else
-                                If AscW(ch) = witecha Then
+                                If AscW(ch) = witecha Or AscW(ch) = moutcha Then
                                     previousChIsAthat = False
                                 End If
                             End If
