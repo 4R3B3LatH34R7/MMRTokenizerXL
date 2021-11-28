@@ -372,10 +372,18 @@ Dim legitConsonantFound As Boolean
     MMRParser = Join(returnStringArray, "|")
 End Function
 ```
+## Formulas
+A number of supporting basic formulas will be posted under this.\
+These are just simple/basic formulas that users can edit/improved upon or replace with whatever they desired.\
+The following are just to give the users an idea on how to extend the functionalities of the provided UDFs.
+![MMRTokenizerXL](/images/formulas_for_wordcount_exploding.png)
+
 ## Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
-### First Release
-[First released](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40 Myanmar Standard Time.
+### v1.0a.First Release
+[First release](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40 Myanmar Standard Time.
+### v1.0.1a.Bugfix for Daw
+[Second release](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0.1a-Pre-Release) on 28NOV2021 07:51 Myanmar Standard Time.
 
 ## The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
