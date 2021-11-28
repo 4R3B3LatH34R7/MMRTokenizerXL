@@ -135,9 +135,9 @@ How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse
 The process is simple in that users just need to use the UDF to reverse the range containing Myanmar words.\
 The UDF only requires the first argument, out of the existing 5: 
 1. the target range, which is essential
-2. the second argument is for defining the left or starting wrapper and can be anything text/string, for example, "(" or "<" or "{" or opening-square-brackets.
+2. the second argument is for defining the left or starting wrapper and can be anything text/string, for example, "(" or "<" or "{" or "\[".
 3. the third argument is for defining the separator for the output of the UDF, which can be anything from ""(vbNullString in VBA) or blank cell (in Excel) or a space or any word in Burmese or English and since no check was performed on this argument's validity, it can be quite powerful and dangerous at the same time.
-4. the fourth argument is for defining the right or ending wrapper and can be anything text/string, including but not limited to e.g., ")" or ">" or "}" or closing-square-brackets.
+4. the fourth argument is for defining the right or ending wrapper and can be anything text/string, including but not limited to e.g., ")" or ">" or "}" or "]".
 5. the fifth argument is a boolean variable which acts as a switch for reversing the output of the UDF.
 
 So, if cell A1 contains "ကိုကိုအေး" and from inside cell B1, if we call the UDF as: (let "->" denotes "returns")
