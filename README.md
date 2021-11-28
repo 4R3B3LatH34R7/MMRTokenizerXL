@@ -396,8 +396,8 @@ Therefore, it is advisable to the user to just copy paste the value from cells c
 
 ## Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
-1.  v1.0a.First Release</li>[First release](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40 Myanmar Standard Time.
-2.  v1.0.1a.Bugfix for Daw [Second release](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0.1a-Pre-Release) on 28NOV2021 07:51 Myanmar Standard Time.
+1.  [v1.0a.First Release](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40 Myanmar Standard Time.
+2.  [v1.0.1a.Bugfix for Daw](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0.1a-Pre-Release) on 28NOV2021 07:51 Myanmar Standard Time.
 
 ### Proposed Uses
 1. Sorting
