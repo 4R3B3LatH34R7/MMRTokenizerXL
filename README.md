@@ -402,8 +402,8 @@ Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/rel
 ### Proposed Uses
 1. Sorting
 2. Natural Language Processing
-    i. Transliteration/Transcription
-    ii. Text-to-Speech/Speech-to-Text
+    1. Transliteration/Transcription
+    2. Text-to-Speech/Speech-to-Text
 3. Encryption
 4. Word Count
 5. Sentiment Analysis
