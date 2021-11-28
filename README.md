@@ -402,11 +402,11 @@ Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/rel
 ### Proposed Uses
 1. Sorting
 2. Natural Language Processing
-    1. Transliteration/Transcription
-    2. Text-to-Speech/Speech-to-Text
-3. Encryption
-4. Word Count
-5. Sentiment Analysis
+3. Transliteration/Transcription
+4. Text-to-Speech/Speech-to-Text
+5. Encryption
+6. Word Count
+7. Sentiment Analysis
 
 ## The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
