@@ -133,16 +133,20 @@ If cell A1 contains မိုးအောင်ခင်, then calling from insi
 How we can use MMRManipulator to sort Myanmar names, words, sentences in reverse can be reviewed in the following short .gif.
 ![MMRManipulator](/images/MMRManipulator_sorting.gif)
 The process is simple in that users just need to use the UDF to reverse the range containing Myanmar words.\
-The UDF only requires the first argument, out of the existing 3: 
+The UDF only requires the first argument, out of the existing 5: 
 1. the target range, which is essential
-2. the second argument is for defining the separator for the output of the UDF, which can be anything from ""=vbNullString or blank or a space or any word in Burmese or English and since no check was performed on this argument's validity, it can be quite powerful and dangerous at the same time.
-3. the third argument is a boolean variable which acts as a switch for reversing the output of the UDF.
+2. the second argument is for defining the left or starting wrapper and can be anything text/string, for example, "(" or "<" or "{" or opening-square-brackets.
+3. the third argument is for defining the separator for the output of the UDF, which can be anything from ""(vbNullString in VBA) or blank cell (in Excel) or a space or any word in Burmese or English and since no check was performed on this argument's validity, it can be quite powerful and dangerous at the same time.
+4. the fourth argument is for defining the right or ending wrapper and can be anything text/string, including but not limited to e.g., ")" or ">" or "}" or closing-square-brackets.
+5. the fifth argument is a boolean variable which acts as a switch for reversing the output of the UDF.
 
 So, if cell A1 contains "ကိုကိုအေး" and from inside cell B1, if we call the UDF as: (let "->" denotes "returns")
 1. =MMRManipulator(A1) -> ကို|ကို|အေး
-2. =MMRManipulator(A1,"@") -> ကို@ကို@အေး
-3. =MMRManipulator(A1,"",TRUE) -> အေးကိုကို (please note that "" is not space but denotes nothing)
-Apart from the cell reference, the remaining 2 arguments are optional, thus, calling like =MMRManipulator(A1,,) is legitimate and will return ကို|ကို|အေး.
+2. =MMRManipulator(A1,,"@",,) -> ကို@ကို@အေး
+3. =MMRManipulator(A1,,"",,TRUE) -> အေးကိုကို (please note that "" is not space but denotes nothing)
+Apart from the cell reference, the remaining 4 arguments are optional, thus, calling like =MMRManipulator(A1) or =MMRManipulator(A1,,,,) is legitimate and will return ကို|ကို|အေး.\
+The reason behind including starting and ending wrappers is to make the output more in line with lists in other programming languages like Pythong.\
+For example, users can call the UDF as =MMRManipulator(A1,"""",",",CHAR(34)) will return "ကို","ကို","အေး" and please note here that the Double quote character must be called as 4xDouble Quotes or CHAR(34) which is a requirement of VBA. Another good example would be calling like =MMRManipulator(A1,"(","-",")",TRUE) which would return something like (အေး)-(ကို)-(ကို).
 
 Users can directly copy the UDF code below instead of downloading the .xlsm or .bas modules from [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
 ```VBA
@@ -385,6 +389,10 @@ For the sake of wider compatibility with different Excel versions, formulas whic
 However, better formulas are being released with each new version of MS Office suite like FilterXML or SEQUENCE formula can be use if the user has higher version of Excel.\
 The following are just to give the users an idea on how to extend the functionalities of the provided UDFs.
 ![MMRTokenizerXL](/images/formulas_for_wordcount_exploding.png)
+
+## Splitting/Exploding the tokenized words
+MS Excel's builtin Text to Column function from Data tab in Menu doesn't see the UDF outputs in a cells as Text but rather like a formula!\
+Therefore, it is advisable to the user to just copy paste the value from cells containing the UDFs over themselves or over to another column as values so that the Text-to-Column function can be used to split/explode the tokenized word output.
 
 ## Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
