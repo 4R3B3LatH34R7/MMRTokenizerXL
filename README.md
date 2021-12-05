@@ -392,7 +392,7 @@ The following are just to give the users an idea on how to extend the functional
 
 ## Splitting/Exploding the tokenized words
 MS Excel's builtin Text to Column function from Data tab in Menu doesn't see the UDF outputs in a cells as Text but rather like a formula!\
-Therefore, it is advisable to the user to just copy paste the value from cells containing the UDFs over themselves or over to another column as values so that the Text-to-Column function can be used to split/explode the tokenized word output.
+Therefore, it is advisable that the users should just copy paste the value from cells containing the UDFs over themselves or over to another column as values so that the Text-to-Column function can be used to split/explode the tokenized word output.
 
 ## Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
