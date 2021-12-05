@@ -382,10 +382,10 @@ Dim legitConsonantFound As Boolean
     MMRParser = Join(returnStringArray, "|")
 End Function
 ```
-## Formulas
+## Supporting Formulas
 A number of supporting basic formulas will be posted under this.\
 These are just simple/basic formulas that users can edit/improved upon or replace with whatever they desired.\
-For the sake of wider compatibility with different Excel versions, formulas which are compatible with as early as Office 2010 or earlier.\
+For the sake of wider compatibility with different Excel versions, the following formulae are compatible with MS Excel versions as early as Office 2010 or maybe earlier.\
 However, better formulas are being released with each new version of MS Office suite like FilterXML or SEQUENCE formula can be use if the user has higher version of Excel.\
 The following are just to give the users an idea on how to extend the functionalities of the provided UDFs.
 ![MMRTokenizerXL](/images/formulas_for_wordcount_exploding.png)
