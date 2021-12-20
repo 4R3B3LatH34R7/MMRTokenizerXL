@@ -400,7 +400,9 @@ New functions were added to aid in the general usability of Myanmar users who mi
 3. Further manipulation of Myanmar Text Strings apart from MMRManipulator UDF from the previous version
 
 The following photo is just an introduction to how the new functions could be used.
-![v1.2New Functions](/images/mmrtokenizer_newFuncs_v1.2.png) 
+![v1.2New Functions](/images/mmrtokenizer_newFuncs_v1.2.png)
+The green conditional highlight was used to show that correct number of columns/cells were selected with CSE before calling MMRSplit UDF.\
+The orange highlighted cells containing #N/A should be easily noticeable as cells which are part of an array output but there was no values in the array for these areas, meaning extra columns/cells were selected while entering the UDF with CSE.
 
 ### New Functions
 There are altogether 5 new functions in v1.2.
