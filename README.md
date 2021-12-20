@@ -91,7 +91,8 @@ Dim returnString As String
 Dim charCounter As Integer
 Dim previousChIsAthat As Boolean
 Dim shiftFfound As Boolean
-Dim previousCharAt As Integer '?long
+Dim previousCharAt As Long
+    If target.Cells.CountLarge > 1 Then MMRTokenizer = ">1Cell!": Exit Function
     returnString = "": previousChIsAthat = False: shiftFfound = False: previousCharAt = Len(target.Value) + 1
     If target.CountLarge = 1 Then
         If target.Value <> "" Then
@@ -180,14 +181,20 @@ Public Const witecha = 4140
 Public Const moutcha = 4139
 
 'Return tokenized words using user-selectable optional separator and ability to reverse the Myanmar word string
-Function MMRManipulator(target As Range, Optional lwrapper As String = "", Optional separator As String = "|", Optional rwrapper As String = "", Optional reversed As Boolean = False) As String
+Function MMRManipulator( _
+                        target As Range, _
+                        Optional lWrapper As String = "", _
+                        Optional separator As String = "|", _
+                        Optional rWrapper As String = "", _
+                        Optional reversed As Boolean = False) As String
 Dim ch As String
 Dim returnString As String
 Dim charCounter As Integer
 Dim previousChIsAthat As Boolean
 Dim shiftFfound As Boolean
 Dim previousCharAt As Integer '?long
-
+Const defaultSeparator As String = "|"
+    If target.Cells.CountLarge > 1 Then MMRManipulator = ">1Cell!": Exit Function
     returnString = "": previousChIsAthat = False: shiftFfound = False: previousCharAt = Len(target.Value) + 1
     If target.CountLarge = 1 Then
         If target.Value <> "" Then
@@ -199,7 +206,7 @@ Dim previousCharAt As Integer '?long
                             If AscW(ch) >= kagyi And AscW(ch) < ah + 9 Then
                                 If Not previousChIsAthat Then
                                     returnString = IIf(reversed, returnString, Mid(target.Value, charCounter, previousCharAt - charCounter)) & _
-                                                   IIf(Len(returnString) > 0, separator, "") & _
+                                                   IIf(Len(returnString) > 0, defaultSeparator, "") & _
                                                    IIf(reversed, Mid(target.Value, charCounter, previousCharAt - charCounter), returnString)
                                     previousCharAt = charCounter
                                 Else
@@ -222,7 +229,12 @@ Dim previousCharAt As Integer '?long
                     shiftFfound = True
                 End If
             Next charCounter
-            returnString = lwrapper & Join(Split(returnString, separator), rwrapper & separator & lwrapper) & rwrapper
+
+            If InStr(returnString, defaultSeparator) > 0 Then 'check for names like may??
+                returnString = Replace(returnString, defaultSeparator, separator)
+            End If
+            returnString = lWrapper & Join(Split(returnString, separator), rWrapper & separator & lWrapper) & rWrapper
+
         End If
     End If
     MMRManipulator = returnString
@@ -269,6 +281,7 @@ Dim returnString As String
 Dim charCounter As Integer
 Dim previousChIsAthat As Boolean
 Dim shiftFfound As Boolean
+    If target.Cells.CountLarge > 1 Then getMMRConsonants = ">1Cell!": Exit Function
     returnString = "": previousChIsAthat = False: shiftFfound = False
     If target.CountLarge = 1 Then
         If target.Value <> "" Then
@@ -351,6 +364,7 @@ Dim chCounter As Integer
 Dim previousChIsAthat As Boolean
 Dim shiftFfound As Boolean
 Dim legitConsonantFound As Boolean
+    If target.Cells.CountLarge > 1 Then MMRParser = ">1Cell!": Exit Function
     previousChIsAthat = False: shiftFfound = False
     If target.CountLarge = 1 Then
         If target.Value <> "" Then
@@ -392,7 +406,7 @@ Dim legitConsonantFound As Boolean
 End Function
 ```
 ## MMRTokenizer v1.2
-MMRTokenizer v1.2 was released on 20DEC2021.\
+MMRTokenizer v1.2 was released on 20DEC2021 and can be found in the [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.2\).
 It contains several new functions and some optimizations.\
 New functions were added to aid in the general usability of Myanmar users who might find difficulties with:
 1. Gender Identification/Classification/Analyses
