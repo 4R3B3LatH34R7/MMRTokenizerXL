@@ -405,7 +405,7 @@ The green conditional highlight was used to show that correct number of columns/
 The orange highlighted cells containing #N/A should be easily noticeable as cells which are part of an array output but there was no values in the array for these areas, meaning extra columns/cells were selected while entering the UDF with CSE.
 
 ### New Functions
-There are altogether 5 new functions in v1.2.
+There are altogether 5 new functions in v1.2. <b>All of these functions require MMRManipulator UDF.</b>\
 1. [MMRSplit](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#1mmrsplittarget-as-rangeas-variant-string)
 2. [MMRLen](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#2mmrlentarget-as-rangeas-long)
 3. [MMRLeft](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#3mmrlefttarget-as-range-howmany-as-longas-string)
@@ -416,23 +416,108 @@ There are altogether 5 new functions in v1.2.
 This UDF is actually best used with Office365-Excel on a Windows computer.\
 The reason behind this is, that, it splits a Myanmar word like a name or a sentence into it's component words (<b>NOT</b>consonants/diacritics etc) into ajacent cells (because it is an array formula). This feature is best suited to be used in a Excel365 environment on a Windows computer.\
 In earlier versions of Excel, a CSE is required to enter this formula as an array formula.\
-If no such precedence were performed, there will be N/A errors which could be avoided by using the next new formula, MMRLen.
+If no such precedence were performed, there will be N/A errors which could be avoided by using the next new formula, MMRLen.\
+````VBA
+'Requires MMRManipulator
+'Splits a Myanmar Text String into its component words and returns them as an array into adjacent cells, must use CSE except on Office365 Windows
+Function MMRSplit(target As Range) As Variant
+    If target.Cells.CountLarge > 1 Then MMRSplit = ">1Cell!": Exit Function
+    MMRSplit = Split(MMRManipulator(target), "|")
+End Function
+````
 
 #### 2.MMRLen(target as Range)as Long
 The new functions in v1.2 are created to mimic the default string functions in Excel and VBA like Split (VBA only), Len, Left, Right, Mid etc. of string manipulation functions.\
 The MMRLen function would simple return the length of a Text String in Myanmar Language typed using Pyidaungsu Font with Burmese Visual Order keyboard.\
 Be mindful that he return from MMRLen is not going to be the same as the Len function/formula.\
 If Cell A1 contains ABC then =Len(A1) would produce 3.\
-Contrary, if Cell A2 contains "အောင်မြင့်", then =Len(A1) would produce 10 because it was spelled like ‌ေ,အ,ာ,င,်, မ,ြ,င,့,်, but =MMRLen(A2) would produce 2 only.
+Contrary, if Cell A2 contains "အောင်မြင့်", then =Len(A1) would produce 10 because it was spelled like ‌ေ,အ,ာ,င,်, မ,ြ,င,့,်, but =MMRLen(A2) would produce 2 only.\
+````VBA
+'Requires MMRManipulator
+'Just like Excel's Len function, this UDF returns the Length of a Myanmar Text String
+Function MMRLen(target As Range) As Long
+Dim targetLen As Long
+    If target.Cells.CountLarge > 1 Then MMRLen = ">1Cell!": Exit Function
+    targetLen = UBound(Split(MMRManipulator(target), "|")) + 1
+    MMRLen = targetLen
+End Function
+````
 
 #### 3.MMRLeft(target as Range, howMany as Long)as String
-This works the same as Excel function Len but like the previous function, MMRLen, it works based on MMRLen rather than default function Len.
+This works the same as Excel function Len but like the previous function, MMRLen, it works based on MMRLen rather than default function Len.\
+````VBA
+'Requires MMRManipulator
+'Just like Excel's Left function, this UDF extracts howMany number of words from a Myanmar Text String counted from the Left
+Function MMRLeft(target As Range, howMany As Long) As String
+Dim targetLen As Long
+Dim MMRString As String
+    If target.Cells.CountLarge > 1 Then MMRLeft = ">1Cell!": Exit Function
+    If target.Value = "" Then MMRLeft = "": Exit Function
+    targetLen = UBound(Split(MMRManipulator(target), "|")) + 1
+    If targetLen > 0 Then
+        If howMany = 0 Then MMRLeft = "": Exit Function
+        If howMany >= targetLen Then MMRLeft = target.Value: Exit Function
+        MMRString = MMRManipulator(target)
+        MMRString = Application.WorksheetFunction.Substitute(MMRString, "|", "*|*", howMany)
+        MMRString = Split(MMRString, "*|*")(0)
+        MMRString = Replace(MMRString, "|", "")
+        MMRLeft = MMRString
+    Else
+        If targetLen <= 0 Then MMRLeft = "": Exit Function
+    End If
+End Function
+````
 
 #### 4.MMRRight(target as Range, howMany as Long)as String
-Same as previous function, MMRLeft, with the only difference being, from where we start counting just like the default function Right in Excel.
+Same as previous function, MMRLeft, with the only difference being, from where we start counting just like the default function Right in Excel.\
+````VBA
+'Requires MMRManipulator
+'Just like Excel's Right function, this UDF extracts howMany number of words from a Myanmar Text String counted from the Right
+Function MMRRight(target As Range, howMany As Long) As String
+Dim targetLen As Long
+Dim MMRString As String
+    If target.Cells.CountLarge > 1 Then MMRRight = ">1Cell!": Exit Function
+    If target.Value = "" Then MMRRight = "": Exit Function
+    targetLen = UBound(Split(MMRManipulator(target), "|")) + 1
+    If targetLen > 0 Then
+        If howMany = 0 Then MMRRight = "": Exit Function
+        If howMany >= targetLen Then MMRRight = target.Value: Exit Function
+        MMRString = MMRManipulator(target)
+        MMRString = Application.WorksheetFunction.Substitute(MMRString, "|", "*|*", targetLen - howMany)
+        MMRString = Split(MMRString, "*|*")(1)
+        MMRString = Replace(MMRString, "|", "")
+        MMRRight = MMRString
+    Else
+        If targetLen <= 0 Then MMRRight = "": Exit Function
+    End If
+End Function
+````
 
 #### 5.MMRMid(target as Range, startPos as Long, howMany as Long)as String
-This function, like the 2 above, was designed to behave just like Excel builtin function/formula, Mid. Be reminded that the counting was based on Myanmar word counting and not as English character counts.
+This function, like the 2 above, was designed to behave just like Excel builtin function/formula, Mid. Be reminded that the counting was based on Myanmar word counting and not as English character counts.\
+````VBA
+'Requires MMRManipulator
+'Just like Excel's Mid function, this UDF extracts howMany number of words from a Myanmar Text String starting from startPos
+Function MMRMid(target As Range, startPos As Long, howMany As Long) As String
+Dim targetLen As Long
+Dim upTill As Long
+Dim MMRString As String
+Dim lenArray()
+    If target.Cells.CountLarge > 1 Then MMRMid = ">1Cell!": Exit Function
+    If target.Value = "" Or startPos <= 0 Or howMany <= 0 Then MMRMid = "": Exit Function
+    targetLen = UBound(Split(MMRManipulator(target), "|")) + 1
+    If startPos > targetLen Then MMRMid = "": Exit Function
+    If targetLen > 0 Then
+        MMRString = MMRManipulator(target)
+        upTill = IIf(startPos + howMany - 1 > targetLen, targetLen, startPos + howMany - 1)
+        ReDim lenArray(startPos To upTill)
+        lenArray = Evaluate("transpose(row(" & startPos & ":" & upTill & "))")
+        MMRMid = Join(Application.Index(Split(MMRString, "|"), 0, lenArray), "")
+    Else
+        If targetLen <= 0 Then MMRMid = "": Exit Function
+    End If
+End Function
+````
 
 ## Supporting Formulas
 A number of supporting basic formulas will be posted under this.\
