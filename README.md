@@ -430,7 +430,7 @@ There are altogether 5 new functions in v1.2. <b>All of these functions require 
 This UDF is actually best used with Office365-Excel on a Windows computer.\
 The reason behind this is, that, it splits a Myanmar word like a name or a sentence into it's component words (<b>NOT</b>consonants/diacritics etc) into ajacent cells (because it is an array formula). This feature is best suited to be used in a Excel365 environment on a Windows computer.\
 In earlier versions of Excel, a CSE is required to enter this formula as an array formula.\
-If no such precedence were performed, there will be N/A errors which could be avoided by using the next new formula, MMRLen.\
+If no such precedence were performed, there will be N/A errors which could be avoided by using the next new formula, MMRLen.
 ````VBA
 'Requires MMRManipulator
 'Splits a Myanmar Text String into its component words and returns them as an array into adjacent cells, must use CSE except on Office365 Windows
@@ -445,7 +445,7 @@ The new functions in v1.2 are created to mimic the default string functions in E
 The MMRLen function would simple return the length of a Text String in Myanmar Language typed using Pyidaungsu Font with Burmese Visual Order keyboard.\
 Be mindful that he return from MMRLen is not going to be the same as the Len function/formula.\
 If Cell A1 contains ABC then =Len(A1) would produce 3.\
-Contrary, if Cell A2 contains "အောင်မြင့်", then =Len(A1) would produce 10 because it was spelled like ‌ေ,အ,ာ,င,်, မ,ြ,င,့,်, but =MMRLen(A2) would produce 2 only.\
+Contrary, if Cell A2 contains "အောင်မြင့်", then =Len(A1) would produce 10 because it was spelled like ‌ေ,အ,ာ,င,်, မ,ြ,င,့,်, but =MMRLen(A2) would produce 2 only.
 ````VBA
 'Requires MMRManipulator
 'Just like Excel's Len function, this UDF returns the Length of a Myanmar Text String
@@ -458,7 +458,7 @@ End Function
 ````
 
 #### 3.MMRLeft(target as Range, howMany as Long)as String
-This works the same as Excel function Len but like the previous function, MMRLen, it works based on MMRLen rather than default function Len.\
+This works the same as Excel function Len but like the previous function, MMRLen, it works based on MMRLen rather than default function Len.
 ````VBA
 'Requires MMRManipulator
 'Just like Excel's Left function, this UDF extracts howMany number of words from a Myanmar Text String counted from the Left
@@ -483,7 +483,7 @@ End Function
 ````
 
 #### 4.MMRRight(target as Range, howMany as Long)as String
-Same as previous function, MMRLeft, with the only difference being, from where we start counting just like the default function Right in Excel.\
+Same as previous function, MMRLeft, with the only difference being, from where we start counting just like the default function Right in Excel.
 ````VBA
 'Requires MMRManipulator
 'Just like Excel's Right function, this UDF extracts howMany number of words from a Myanmar Text String counted from the Right
@@ -508,7 +508,7 @@ End Function
 ````
 
 #### 5.MMRMid(target as Range, startPos as Long, howMany as Long)as String
-This function, like the 2 above, was designed to behave just like Excel builtin function/formula, Mid. Be reminded that the counting was based on Myanmar word counting and not as English character counts.\
+This function, like the 2 above, was designed to behave just like Excel builtin function/formula, Mid. Be reminded that the counting was based on Myanmar word counting and not as English character counts.
 ````VBA
 'Requires MMRManipulator
 'Just like Excel's Mid function, this UDF extracts howMany number of words from a Myanmar Text String starting from startPos
