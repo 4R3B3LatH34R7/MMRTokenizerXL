@@ -399,13 +399,16 @@ New functions were added to aid in the general usability of Myanmar users who mi
 2. Getting a count of words in a Myanmar Text String
 3. Further manipulation of Myanmar Text Strings apart from MMRManipulator UDF from the previous version
 
+The following photo is just an introduction to how the new functions could be used.
+![v1.2New Functions](/images/mmrtokenizer_newFuncs_v1.2.png) 
+
 ### New Functions
 There are altogether 5 new functions in v1.2.
-1. MMRSplit
-2. MMRLen
-3. MMRLeft
-4. MMRRight
-5. MMRMid
+1. [MMRSplit](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#1mmrsplittarget-as-rangeas-variant-string)
+2. [MMRLen](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#2mmrlentarget-as-rangeas-long)
+3. [MMRLeft](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#3mmrlefttarget-as-range-howmany-as-longas-string)
+4. [MMRRight](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#4mmrrighttarget-as-range-howmany-as-longas-string)
+5. [MMRMid](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#5mmrmidtarget-as-range-startpos-as-long-howmany-as-longas-string)
 
 #### 1.MMRSplit(target as Range)as Variant 'String
 This UDF is actually best used with Office365-Excel on a Windows computer.\
