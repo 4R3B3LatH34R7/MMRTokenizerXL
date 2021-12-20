@@ -391,6 +391,44 @@ Dim legitConsonantFound As Boolean
     MMRParser = Join(returnStringArray, "|")
 End Function
 ```
+## MMRTokenizer v1.2
+MMRTokenizer v1.2 was released on 20DEC2021.\
+It contains several new functions and some optimizations.\
+New functions were added to aid in the general usability of Myanmar users who might find difficulties with:
+1. Gender Identification/Classification/Analyses
+2. Getting a count of words in a Myanmar Text String
+3. Further manipulation of Myanmar Text Strings apart from MMRManipulator UDF from the previous version
+
+### New Functions
+There are altogether 5 new functions in v1.2.
+1. MMRSplit
+2. MMRLen
+3. MMRLeft
+4. MMRRight
+5. MMRMid
+
+#### 1.MMRSplit(target as Range)as Variant 'String
+This UDF is actually best used with Office365-Excel on a Windows computer.\
+The reason behind this is, that, it splits a Myanmar word like a name or a sentence into it's component words (<b>NOT</b>consonants/diacritics etc) into ajacent cells (because it is an array formula). This feature is best suited to be used in a Excel365 environment on a Windows computer.\
+In earlier versions of Excel, a CSE is required to enter this formula as an array formula.\
+If no such precedence were performed, there will be N/A errors which could be avoided by using the next new formula, MMRLen.
+
+#### 2.MMRLen(target as Range)as Long
+The new functions in v1.2 are created to mimic the default string functions in Excel and VBA like Split (VBA only), Len, Left, Right, Mid etc. of string manipulation functions.\
+The MMRLen function would simple return the length of a Text String in Myanmar Language typed using Pyidaungsu Font with Burmese Visual Order keyboard.\
+Be mindful that he return from MMRLen is not going to be the same as the Len function/formula.\
+If Cell A1 contains ABC then =Len(A1) would produce 3.\
+Contrary, if Cell A2 contains "အောင်မြင့်", then =Len(A1) would produce 10 because it was spelled like ‌ေ,အ,ာ,င,်, မ,ြ,င,့,်, but =MMRLen(A2) would produce 2 only.
+
+#### 3.MMRLeft(target as Range, howMany as Long)as String
+This works the same as Excel function Len but like the previous function, MMRLen, it works based on MMRLen rather than default function Len.
+
+#### 4.MMRRight(target as Range, howMany as Long)as String
+Same as previous function, MMRLeft, with the only difference being, from where we start counting just like the default function Right in Excel.
+
+#### 5.MMRMid(target as Range, startPos as Long, howMany as Long)as String
+This function, like the 2 above, was designed to behave just like Excel builtin function/formula, Mid. Be reminded that the counting was based on Myanmar word counting and not as English character counts.
+
 ## Supporting Formulas
 A number of supporting basic formulas will be posted under this.\
 These are just simple/basic formulas that users can edit/improved upon or replace with whatever they desired.\
