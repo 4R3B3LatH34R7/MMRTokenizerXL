@@ -534,7 +534,7 @@ End Function
 ````
 
 ## 4.Supporting Formulas
-<b>This section is no longer needed since 20DEC2021 with the release of v1.2 containing Myanmar Text Manipulation functions described [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/blob/main/README.md#351new-functions).</b>
+<b>This section is no longer needed since 20DEC2021 with the release of v1.2 containing Myanmar Text Manipulation functions described [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/blob/main/README.md#351new-functions). </b>
 
 A number of supporting basic formulas will be posted under this.\
 These are just simple/basic formulas that users can edit/improved upon or replace with whatever they desired.\
