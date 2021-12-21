@@ -418,7 +418,7 @@ The following photo is just an introduction to how the new functions could be us
 The green conditional highlight was used to show that correct number of columns/cells were selected with CSE before calling MMRSplit UDF.\
 The orange highlighted cells containing #N/A should be easily noticeable as cells which are part of an array output but there was no values in the array for these areas, meaning extra columns/cells were selected while entering the UDF with CSE.
 
-### 3.5.1.New Functions
+### 3.5.1.New Functions (starting from v1.2)
 There are altogether 5 new functions in v1.2. <b>All of these functions require MMRManipulator UDF.</b>\
 1. [MMRSplit](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#1mmrsplittarget-as-rangeas-variant-string)
 2. [MMRLen](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#2mmrlentarget-as-rangeas-long)
@@ -534,6 +534,7 @@ End Function
 ````
 
 ## 4.Supporting Formulas
+<b>This section is no longer needed since 20DEC2021 with the release of v1.2 containing Myanmar Text Manipulation functions described [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/blob/main/README.md#351new-functions).</b>
 A number of supporting basic formulas will be posted under this.\
 These are just simple/basic formulas that users can edit/improved upon or replace with whatever they desired.\
 For the sake of wider compatibility with different Excel versions, the following formulae are compatible with MS Excel versions as early as Office 2010 or maybe earlier.\
@@ -560,6 +561,7 @@ Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/rel
 6. Word Count
 7. Sentiment Analysis
 8. Gender identification/prediction/analysis from salutation
+9. First Name/Last Name differentiation
 
 ## 8.The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
