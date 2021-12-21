@@ -1,7 +1,7 @@
 # MMRTokenizerXL
-## Tokenizer for Myanmar Unicode Pyidaungsu Font (Visual Order)
+## 1.Tokenizer for Myanmar Unicode Pyidaungsu Font (Visual Order)
 ![MMRTokenizerXL](/images/MMRTokenizerXL.png)
-## The Journey
+## 2.The Journey
 As usual, while I was haunting in my usual Facebook Excel groups, I came across somebody asking a question on how to sort a Myanmar Name in Myanmar font using the last name.
 As we, all Myanmar people, know, our names do not have a first name/last name basis but rather like a jumble of nice words joined together to get a beautiful or following the Myanmar astrological beliefs.\
 The main problem with this naming system concerns something else.
@@ -48,7 +48,7 @@ I tried using the consonant extraction UDF and compared it to sorting by using o
 This drives me to finish the whole Tokenization UDF because the Burmese language sorting system uses not just consonants but other parts in the building of a word like those I already mentioned above for example, ်  or ာ or ိ or ု or ့  etc of may of those things/diacritics?.\
 Enough said and I wish to admit that I used just string manipulation functions in this UDF rather than the NLP methods. I am not employing ML or AI with all this.
 
-## The UDFs
+## 3.The UDFs
 The source code of the UDFs may be released as plain text.\
 There are currently 4 UDFs in the .bas and .xlsm files upon release.
 1. [MMRTokenizer](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#11mmrtokenizer)
@@ -56,7 +56,7 @@ There are currently 4 UDFs in the .bas and .xlsm files upon release.
 3. [getMMRConsonants](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#13getmmrconsonants)
 4. [MMRParser](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#14mmrparser)
 
-### 1.1.MMRTokenizer
+### 3.1.MMRTokenizer
 MMRTokenizer is designed to be used mainly for tokenization of Myanmar words without additional bells and whistles, as this UDF was purported to be used for further processing into NLP methods, rather than intended for general everyday use.\
 If extra functionality is required, the users are encouraged to use [MMRManipulator UDF](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#mmrmanipulator).\
 Since this UDF is mainly intended for NLP-related usage, it's users are expected to be able to manipulate the VBA source code directly to change the separator to their whims, so no switching arguments are included for that purpose.
@@ -131,7 +131,7 @@ Dim previousCharAt As Long
 End Function
 ```
 
-### 1.2.MMRManipulator
+### 3.2.MMRManipulator
 This is a tool spawned from being able to tokenize Myanmar/Burmese words typed using Burmese Visual Order Keyboard in Windows, deviating from this would result in lesser performance.\
 It can be used to tokenize the words, for any purpose, like for sorting, counting, replacing...etc...with the sky at the limit of the users' imagination.\
 With argument switch(es), users can change the tokenization character to become anything, any text, any string, even nothing!\
@@ -241,7 +241,7 @@ Const defaultSeparator As String = "|"
 End Function
 ```
 
-### 1.3.getMMRConsonants
+### 3.3.getMMRConsonants
 This UDF was designed in the earlier stages of development of MMRTokenizer to help me identify, check and confirm the location of Myanmar consonants in a cell containing Myanmar word(s).\
 There are altogether 4 possible arguments that can be passed when calling it.
 1. target range (required)
@@ -319,7 +319,7 @@ Dim shiftFfound As Boolean
 End Function
 ```
 
-### 1.4.MMRParser
+### 3.4.MMRParser
 This UDF was also written in the earlier part of the development of MMRTokenizer to help me confirm the location of the Myanmar consonants.\
 Only 1 argument is required, out of the 3 possible arguments.\
 1. target range (required)
@@ -405,7 +405,7 @@ Dim legitConsonantFound As Boolean
     MMRParser = Join(returnStringArray, "|")
 End Function
 ```
-## MMRTokenizer v1.2
+## 3.5.MMRTokenizer v1.2
 MMRTokenizer v1.2 was released on 20DEC2021 and can be found in the [Releases Section](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.2\).
 It contains several new functions and some optimizations.\
 New functions were added to aid in the general usability of Myanmar users who might find difficulties with:
@@ -418,7 +418,7 @@ The following photo is just an introduction to how the new functions could be us
 The green conditional highlight was used to show that correct number of columns/cells were selected with CSE before calling MMRSplit UDF.\
 The orange highlighted cells containing #N/A should be easily noticeable as cells which are part of an array output but there was no values in the array for these areas, meaning extra columns/cells were selected while entering the UDF with CSE.
 
-### New Functions
+### 3.5.1.New Functions
 There are altogether 5 new functions in v1.2. <b>All of these functions require MMRManipulator UDF.</b>\
 1. [MMRSplit](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#1mmrsplittarget-as-rangeas-variant-string)
 2. [MMRLen](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#2mmrlentarget-as-rangeas-long)
@@ -426,7 +426,7 @@ There are altogether 5 new functions in v1.2. <b>All of these functions require 
 4. [MMRRight](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#4mmrrighttarget-as-range-howmany-as-longas-string)
 5. [MMRMid](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#5mmrmidtarget-as-range-startpos-as-long-howmany-as-longas-string)
 
-#### 1.MMRSplit(target as Range)as Variant 'String
+#### 3.5.1.1.MMRSplit(target as Range)as Variant 'String
 This UDF is actually best used with Office365-Excel on a Windows computer.\
 The reason behind this is, that, it splits a Myanmar word like a name or a sentence into it's component words (<b>NOT</b>consonants/diacritics etc) into ajacent cells (because it is an array formula). This feature is best suited to be used in a Excel365 environment on a Windows computer.\
 In earlier versions of Excel, a CSE is required to enter this formula as an array formula.\
@@ -440,7 +440,7 @@ Function MMRSplit(target As Range) As Variant
 End Function
 ````
 
-#### 2.MMRLen(target as Range)as Long
+#### 3.5.1.2.MMRLen(target as Range)as Long
 The new functions in v1.2 are created to mimic the default string functions in Excel and VBA like Split (VBA only), Len, Left, Right, Mid etc. of string manipulation functions.\
 The MMRLen function would simple return the length of a Text String in Myanmar Language typed using Pyidaungsu Font with Burmese Visual Order keyboard.\
 Be mindful that he return from MMRLen is not going to be the same as the Len function/formula.\
@@ -457,7 +457,7 @@ Dim targetLen As Long
 End Function
 ````
 
-#### 3.MMRLeft(target as Range, howMany as Long)as String
+#### 3.5.1.3.MMRLeft(target as Range, howMany as Long)as String
 This works the same as Excel function Len but like the previous function, MMRLen, it works based on MMRLen rather than default function Len.
 ````VBA
 'Requires MMRManipulator
@@ -482,7 +482,7 @@ Dim MMRString As String
 End Function
 ````
 
-#### 4.MMRRight(target as Range, howMany as Long)as String
+#### 3.5.1.4.MMRRight(target as Range, howMany as Long)as String
 Same as previous function, MMRLeft, with the only difference being, from where we start counting just like the default function Right in Excel.
 ````VBA
 'Requires MMRManipulator
@@ -507,7 +507,7 @@ Dim MMRString As String
 End Function
 ````
 
-#### 5.MMRMid(target as Range, startPos as Long, howMany as Long)as String
+#### 3.5.1.5.MMRMid(target as Range, startPos as Long, howMany as Long)as String
 This function, like the 2 above, was designed to behave just like Excel builtin function/formula, Mid. Be reminded that the counting was based on Myanmar word counting and not as English character counts.
 ````VBA
 'Requires MMRManipulator
@@ -533,7 +533,7 @@ Dim lenArray()
 End Function
 ````
 
-## Supporting Formulas
+## 4.Supporting Formulas
 A number of supporting basic formulas will be posted under this.\
 These are just simple/basic formulas that users can edit/improved upon or replace with whatever they desired.\
 For the sake of wider compatibility with different Excel versions, the following formulae are compatible with MS Excel versions as early as Office 2010 or maybe earlier.\
@@ -541,17 +541,17 @@ However, better formulas are being released with each new version of MS Office s
 The following are just to give the users an idea on how to extend the functionalities of the provided UDFs.
 ![MMRTokenizerXL](/images/formulas_for_wordcount_exploding.png)
 
-## Splitting/Exploding the tokenized words
+## 5.Splitting/Exploding the tokenized words
 MS Excel's builtin Text to Column function from Data tab in Menu doesn't see the UDF outputs in a cells as Text but rather like a formula!\
 Therefore, it is advisable that the users should just copy paste the value from cells containing the UDFs over themselves or over to another column as values so that the Text-to-Column function can be used to split/explode the tokenized word output.
 
-## Releases
+## 6.Releases
 Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases).
 1.  [v1.0a.First Release](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0a-Pre-Release) on 26NOV2021 19:40 Myanmar Standard Time.
 2.  [v1.0.1a.Bugfix for Daw](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.0.1a-Pre-Release) on 28NOV2021 07:51 Myanmar Standard Time.
 3.  [v1.2.New functions](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/releases/tag/v1.2) on 20DEC2021 16:20 Myanmar Standard Time.
 
-### Proposed Uses
+## 7.Proposed Uses
 1. Sorting
 2. Natural Language Processing
 3. Transliteration/Transcription
@@ -561,7 +561,7 @@ Releases can be found [here](https://github.com/4R3B3LatH34R7/MMRTokenizerXL/rel
 7. Sentiment Analysis
 8. Gender identification/prediction/analysis from salutation
 
-## The Future
+## 8.The Future
 I will probably write up another part here when I could successfully write an Excel formula based on the algorithm I used here.\
 I believe that is very feasible but the only problem I can foresee now is that, Unichar and Unicode formulas are only available in Office 2013 onwards and unfortunately this will limit the users of my future tokenization formula.\
 Fortunately for them, they can use the UDF that I developed, which may have a bit of a hassle for copying/importing the code into their worksheets.
