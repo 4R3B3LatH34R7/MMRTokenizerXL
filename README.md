@@ -416,7 +416,7 @@ New functions were added to aid in the general usability of Myanmar users who mi
 The following photo is just an introduction to how the new functions could be used.
 ![v1.2New Functions](/images/mmrtokenizer_newFuncs_v1.2.png)
 <b>Please note that in row 4, at cell J4, we can see that we are missing မြင့် from the full name ရာဇာဝင်းမြင့် because we selected only G4:I4 when CSE was entered, however, if this were done in Excel365, it would not have this kind of error as array formulas just spill into adjacent cells.</b>\
-It should also be noted that in cells D10 သာ+ဒွန်း and D16 Lလွန်းနီ, edits were made on-the-fly to add + or change အယ် to L.၏
+It should also be noted that in cells D10 သာ+ဒွန်း and D16 Lလွန်းနီ, edits were made on-the-fly to add + or change အယ် to L.\
 I just want to point out how easy it is, now, to add/remove while using the new functions.
 
 The green conditional highlight was used to show that correct number of columns/cells were selected with CSE before calling MMRSplit UDF.\
