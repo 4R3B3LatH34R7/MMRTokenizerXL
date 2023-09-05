@@ -423,7 +423,7 @@ The green conditional highlight was used to show that correct number of columns/
 The orange highlighted cells containing #N/A should be easily noticeable as cells which are part of an array output but there was no values in the array for these areas, meaning extra columns/cells were selected while entering the UDF with CSE.
 
 ### 3.5.1.New Functions (starting from v1.2)
-There are altogether 5 new functions in v1.2. <b>All of these functions require MMRManipulator UDF.</b>\
+There are altogether 5 new functions in v1.2. <b>All of these functions require MMRManipulator UDF.</b>
 1. [MMRSplit](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#1mmrsplittarget-as-rangeas-variant-string)
 2. [MMRLen](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#2mmrlentarget-as-rangeas-long)
 3. [MMRLeft](https://github.com/4R3B3LatH34R7/MMRTokenizerXL#3mmrlefttarget-as-range-howmany-as-longas-string)
